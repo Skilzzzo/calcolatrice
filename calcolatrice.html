@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Calcolatrice</title>
+    <style>
+        body{
+            background-color: lightyellow;
+        }
+        .borde{
+            border: solid rgba(0, 0, 0, 0.289) 2px;
+            margin-top: 5em;
+            background-color:#ddd;
+            border-radius: 0.4em;
+            box-shadow:0.3em 0.3em 0.7em #999;
+        }
+        .ris{
+            width: 100%;
+            height: 3em;
+            border: solid rgba(0, 0, 0, 0.868) 2px;
+            margin-top: 1em;
+            margin-bottom: 1em;
+            margin-left: 0.1em;
+            margin-right: 0.1em;
+            background-color: white;
+            border-radius: 0.3em;
+            text-align: right;
+            font-size: x-large;
+            font-weight: bold;
+        }
+        .spazio{
+            width: 100%;
+            padding: 0.5em;
+            margin: 0.1em;
+            font-size: x-large;
+            font-weight: bold;
+            border-radius: 0.3em;
+            border: solid rgba(0, 0, 0, 0.138) 2px;
+            background-color:#eee;
+        }
+
+
+        .spazio:hover{
+            background-color: lightgray;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-3 borde">
+                <form name="form">
+                    <input class="area ris" name="area" value="" placeholder="0">
+                    <div class="col d-flex flex-row">
+                        <input type="button" class="spazio" value="C" onclick="reset()">
+                        <input type="button" class="spazio" value="<" onclick="cancella();">
+                    </div>
+                    <div class="col d-flex flex-row">
+                        <input type="button" class="spazio" value="1" onclick="dig(1);">
+                        <input type="button" class="spazio" value="2" onclick="dig(2);">
+                        <input type="button" class="spazio" value="3" onclick="dig(3);">
+                        <input type="button" class="spazio" value="-" onclick="dig('-');">
+                    </div>
+                    <div class="col d-flex flex-row">
+                        <input type="button" class="spazio" value="4" onclick="dig(4);">
+                        <input type="button" class="spazio" value="5" onclick="dig(5);">
+                        <input type="button" class="spazio" value="6" onclick="dig(6);">
+                        <input type="button" class="spazio" value=":" onclick="dig('/');">
+                    </div>
+                    <div class="col d-flex flex-row">
+                        <input type="button" class="spazio" value="7" onclick="dig(7);">
+                        <input type="button" class="spazio" value="8" onclick="dig(8);">
+                        <input type="button" class="spazio" value="9" onclick="dig(9);">
+                        <input type="button" class="spazio" value="x" onclick="dig('*')">
+                    </div>
+                    <div class="col d-flex flex-row">
+                        <input type="button" class="spazio" value="0" onclick="dig(0);">
+                        <input type="button" class="spazio" value="," onclick="dig(',');">
+                        <input type="button" class="spazio" value="+" onclick="dig('+');">
+                        <input type="button" class="spazio" value="=" onclick="somma();">
+                    </div>
+                </form>  
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        function dig(n){
+            document.form.area.value = document.form.area.value+n
+        }
+        function somma() {
+            var c = document.form.area.value;
+            if (c){
+                document.form.area.value = eval(c);  // devo trovare un metodo per sostituire questo
+            }
+        }
+        function reset() {
+            document.form.area.value = '';
+        }
+        function cancella() {
+            var a = document.form.area.value;
+            document.form.area.value = a.substring(0, a.length-1);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
